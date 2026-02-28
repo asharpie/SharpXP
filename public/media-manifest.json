@@ -1,0 +1,231 @@
+{
+  "music": [
+    {
+      "title": "Do I Wanna Know",
+      "album": "AM",
+      "artist": "Arctic Monkeys",
+      "src": "/music/Do-I-Wanna-Know_AM_Arctic-Monkeys.mp3",
+      "cover": "/music/Do-I-Wanna-Know_AM_Arctic-Monkeys.png"
+    },
+    {
+      "title": "Roll My Stone",
+      "album": "Roll My Stone",
+      "artist": "Arcy Drive",
+      "src": "/music/Roll-My-Stone_Roll-My-Stone_Arcy-Drive.mp3",
+      "cover": "/music/Roll-My-Stone_Roll-My-Stone_Arcy-Drive.png"
+    },
+    {
+      "title": "You Are What You Do",
+      "album": "You Are What You Do",
+      "artist": "Aviram",
+      "src": "/music/You-Are-What-You-Do_You-Are-What-You-Do_Aviram.mp3",
+      "cover": "/music/You-Are-What-You-Do_You-Are-What-You-Do_Aviram.png"
+    },
+    {
+      "title": "Down The Road",
+      "album": "Tetra",
+      "artist": "C2C",
+      "src": "/music/Down-The-Road_Tetra_C2C.mp3",
+      "cover": "/music/Down-The-Road_Tetra_C2C.png"
+    },
+    {
+      "title": "Purgatory Silverstar",
+      "album": "The Crux Deluxe",
+      "artist": "Djo",
+      "src": "/music/Purgatory-Silverstar_The-Crux-Deluxe_Djo.mp3",
+      "cover": "/music/Purgatory-Silverstar_The-Crux-Deluxe_Djo.png"
+    },
+    {
+      "title": "right",
+      "album": "Burnout Days",
+      "artist": "flipturn",
+      "src": "/music/right_Burnout-Days_flipturn.mp3",
+      "cover": "/music/right_Burnout-Days_flipturn.png"
+    },
+    {
+      "title": "Swim Between Trees",
+      "album": "Burnout Days",
+      "artist": "flipturn",
+      "src": "/music/Swim-Between-Trees_Burnout-Days_flipturn.mp3",
+      "cover": "/music/Swim-Between-Trees_Burnout-Days_flipturn.png"
+    },
+    {
+      "title": "Take Me Out",
+      "album": "Franz Ferdinand",
+      "artist": "Franz Ferdinand",
+      "src": "/music/Take-Me-Out_Franz-Ferdinand_Franz-Ferdinand.mp3",
+      "cover": "/music/Take-Me-Out_Franz-Ferdinand_Franz-Ferdinand.png"
+    },
+    {
+      "title": "Tokyo Drifting",
+      "album": "Dreamland",
+      "artist": "Glass Animals",
+      "src": "/music/Tokyo-Drifting_Dreamland_Glass-Animals.mp3",
+      "cover": "/music/Tokyo-Drifting_Dreamland_Glass-Animals.png"
+    },
+    {
+      "title": "Basket Case",
+      "album": "Dookie",
+      "artist": "Green Day",
+      "src": "/music/Basket-Case_Dookie_Green-Day.mp3",
+      "cover": "/music/Basket-Case_Dookie_Green-Day.png"
+    },
+    {
+      "title": "Colors",
+      "album": "BADLANDS",
+      "artist": "Halsey",
+      "src": "/music/Colors_BADLANDS_Halsey.mp3",
+      "cover": "/music/Colors_BADLANDS_Halsey.png"
+    },
+    {
+      "title": "Flagpole Sitta",
+      "album": "Where Have All The Merrymakers Gone",
+      "artist": "Harvey Danger",
+      "src": "/music/Flagpole-Sitta_Where-Have-All-The-Merrymakers-Gone_Harvey-Danger.mp3",
+      "cover": "/music/Flagpole-Sitta_Where-Have-All-The-Merrymakers-Gone_Harvey-Danger.png"
+    },
+    {
+      "title": "Strange Love",
+      "album": "Golden Age",
+      "artist": "Houndmouth",
+      "src": "/music/Strange-Love_Golden-Age_Houndmouth.mp3",
+      "cover": "/music/Strange-Love_Golden-Age_Houndmouth.png"
+    },
+    {
+      "title": "Comin' To You",
+      "album": "Comin' To You",
+      "artist": "Kishi Bashi",
+      "src": "/music/Comin'-To-You_Comin'-To-You_Kishi-Bashi.mp3",
+      "cover": "/music/Comin'-To-You_Comin'-To-You_Kishi-Bashi.png"
+    },
+    {
+      "title": "She Wants To Go Dancing",
+      "album": "She Wants To Go Dancing",
+      "artist": "Mt. Joy",
+      "src": "/music/She-Wants-To-Go-Dancing_She-Wants-To-Go-Dancing_Mt.-Joy.mp3",
+      "cover": "/music/She-Wants-To-Go-Dancing_She-Wants-To-Go-Dancing_Mt.-Joy.png"
+    },
+    {
+      "title": "Stayaway",
+      "album": "Saves The World",
+      "artist": "MUNA",
+      "src": "/music/Stayaway_Saves-The-World_MUNA.mp3",
+      "cover": "/music/Stayaway_Saves-The-World_MUNA.png"
+    },
+    {
+      "title": "Major Tom (Coming Home)",
+      "album": "The Different Story (World Of Lust And Crime)",
+      "artist": "Peter Schilling",
+      "src": "/music/Major-Tom-(Coming-Home)_The-Different-Story-(World-Of-Lust-And-Crime)_Peter-Schilling.mp3",
+      "cover": "/music/Major-Tom-(Coming-Home)_The-Different-Story-(World-Of-Lust-And-Crime)_Peter-Schilling.png"
+    },
+    {
+      "title": "Common People",
+      "album": "Different Class",
+      "artist": "Pulp",
+      "src": "/music/Common-People_Different-Class_Pulp.mp3",
+      "cover": "/music/Common-People_Different-Class_Pulp.png"
+    },
+    {
+      "title": "Once In A Lifetime",
+      "album": "Reamin in Light",
+      "artist": "Talking Heads",
+      "src": "/music/Once-In-A-Lifetime_Reamin-in-Light_Talking-Heads.mp3",
+      "cover": "/music/Once-In-A-Lifetime_Reamin-in-Light_Talking-Heads.png"
+    },
+    {
+      "title": "My Old Ways",
+      "album": "Deadbeat",
+      "artist": "Tame Impala",
+      "src": "/music/My-Old-Ways_Deadbeat_Tame-Impala.mp3",
+      "cover": "/music/My-Old-Ways_Deadbeat_Tame-Impala.png"
+    },
+    {
+      "title": "Yoshimi Battles the Pink Robots",
+      "album": "Yoshimi Battles the Pink Robots",
+      "artist": "The Flaming Lips",
+      "src": "/music/Yoshimi-Battles-the-Pink-Robots_Yoshimi-Battles-the-Pink-Robots_The-Flaming-Lips.mp3",
+      "cover": "/music/Yoshimi-Battles-the-Pink-Robots_Yoshimi-Battles-the-Pink-Robots_The-Flaming-Lips.png"
+    },
+    {
+      "title": "Greek Tragedy",
+      "album": "Glitterbug",
+      "artist": "The Wombats",
+      "src": "/music/Greek-Tragedy_Glitterbug_The-Wombats.mp3",
+      "cover": "/music/Greek-Tragedy_Glitterbug_The-Wombats.png"
+    },
+    {
+      "title": "1980s Horror Film",
+      "album": "Spring EP",
+      "artist": "Wallows",
+      "src": "/music/1980s-Horror-Film_Spring-EP_Wallows.mp3",
+      "cover": "/music/1980s-Horror-Film_Spring-EP_Wallows.png"
+    },
+    {
+      "title": "The Promise",
+      "album": "When In Rome",
+      "artist": "When In Rome",
+      "src": "/music/The-Promise_When-In-Rome_When-In-Rome.mp3",
+      "cover": "/music/The-Promise_When-In-Rome_When-In-Rome.png"
+    },
+    {
+      "title": "Mind Over Matter",
+      "album": "Mind Over Matter",
+      "artist": "Young the Giant",
+      "src": "/music/Mind-Over-Matter_Mind-Over-Matter_Young-the-Giant.mp3",
+      "cover": "/music/Mind-Over-Matter_Mind-Over-Matter_Young-the-Giant.png"
+    }
+  ],
+  "videos": [
+    {
+      "title": "Baby Driver",
+      "src": "/videos/Baby-Driver.mp4",
+      "cover": "/videos/Baby-Driver.png"
+    },
+    {
+      "title": "Good Will Hunting",
+      "src": "/videos/Good-Will-Hunting.mp4",
+      "cover": "/videos/Good-Will-Hunting.png"
+    },
+    {
+      "title": "High Fidelity",
+      "src": "/videos/High-Fidelity.mp4",
+      "cover": "/videos/High-Fidelity.png"
+    },
+    {
+      "title": "Labyrinth",
+      "src": "/videos/Labyrinth.mp4",
+      "cover": "/videos/Labyrinth.png"
+    },
+    {
+      "title": "Moneyball",
+      "src": "/videos/Moneyball.mp4",
+      "cover": "/videos/Moneyball.png"
+    },
+    {
+      "title": "My Neighbor Totoro",
+      "src": "/videos/My-Neighbor-Totoro.mp4",
+      "cover": "/videos/My-Neighbor-Totoro.png"
+    },
+    {
+      "title": "Scott Pilgrim VS The World",
+      "src": "/videos/Scott-Pilgrim-VS-The-World.mp4",
+      "cover": "/videos/Scott-Pilgrim-VS-The-World.png"
+    },
+    {
+      "title": "Spider Man Across The Spider Verse",
+      "src": "/videos/Spider-Man-Across-The-Spider-Verse.mp4",
+      "cover": "/videos/Spider-Man-Across-The-Spider-Verse.png"
+    },
+    {
+      "title": "Star Wars Episode III Revenge Of The Sith",
+      "src": "/videos/Star-Wars-Episode-III-Revenge-Of-The-Sith.mp4",
+      "cover": "/videos/Star-Wars-Episode-III-Revenge-Of-The-Sith.png"
+    },
+    {
+      "title": "The Imitation Game",
+      "src": "/videos/The-Imitation-Game.mp4",
+      "cover": "/videos/The-Imitation-Game.png"
+    }
+  ]
+}
