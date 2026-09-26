@@ -71,7 +71,7 @@ export const useDesktopStore = create<DesktopStore>((set, get) => ({
         set(s => ({
           windows: s.windows.map(w =>
             w.id === existing.id
-              ? { ...w, minimized: false, initialData: initialData || w.initialData }
+              ? { ...w, minimized: false, initialData: initialData ? { ...initialData } : w.initialData }
               : w
           ),
           maxZIndex: s.maxZIndex + 1,
@@ -114,7 +114,7 @@ export const useDesktopStore = create<DesktopStore>((set, get) => ({
       zIndex: newZ,
       resizable: appDef.resizable,
       minSize: appDef.minSize,
-      initialData,
+      initialData: initialData ? { ...initialData } : undefined,
     }
 
     set({

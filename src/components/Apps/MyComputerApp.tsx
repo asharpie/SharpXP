@@ -47,7 +47,7 @@ export default function MyComputerApp() {
           <div className="mycomputer-sidebar-section">
             <div className="mycomputer-sidebar-title">System Tasks</div>
             <div className="mycomputer-sidebar-link" onClick={() => openWindow(apps.ie7)}>View portfolio</div>
-            <div className="mycomputer-sidebar-link" onClick={() => window.open('https://github.com/asharpie', '_blank')}>GitHub</div>
+            <div className="mycomputer-sidebar-link" onClick={() => window.open('https://github.com/asharpie', '_blank', 'noopener,noreferrer')}>GitHub</div>
           </div>
           <div className="mycomputer-sidebar-section">
             <div className="mycomputer-sidebar-title">Details</div>

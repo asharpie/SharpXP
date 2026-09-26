@@ -1,6 +1,6 @@
 /**
  * =====================================================
- *  MEDIA CONFIGURATION — Edit this file to add your music and videos!
+ *  MEDIA CONFIGURATION - Edit this file to add your music and videos!
  * =====================================================
  *
  *  HOW TO ADD MUSIC:
@@ -28,7 +28,7 @@ export interface Video {
 }
 
 // ──────────────────────────────────────────────
-//  🎵 MUSIC PLAYLIST — Add your songs here!
+//  🎵 MUSIC PLAYLIST - Add your songs here!
 // ──────────────────────────────────────────────
 export const musicPlaylist: Track[] = [
   // Example (uncomment and edit):
@@ -38,7 +38,7 @@ export const musicPlaylist: Track[] = [
 ]
 
 // ──────────────────────────────────────────────
-//  🎬 VIDEO PLAYLIST — Add your videos here!
+//  🎬 VIDEO PLAYLIST - Add your videos here!
 // ──────────────────────────────────────────────
 export const videoPlaylist: Video[] = [
   // Example (uncomment and edit):

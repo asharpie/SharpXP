@@ -68,6 +68,14 @@ export default function DesktopIcon({ icon, label, selected, position, onClick, 
     if (!didDragRef.current) onDoubleClick()
   }
 
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key !== 'Enter' && e.key !== ' ') return
+    e.preventDefault()
+    e.stopPropagation()
+    onClick()
+    onDoubleClick()
+  }
+
   const style: React.CSSProperties = position
     ? { position: 'absolute', left: position.x, top: position.y }
     : {}
@@ -88,6 +96,10 @@ export default function DesktopIcon({ icon, label, selected, position, onClick, 
       onMouseDown={handleMouseDown}
       onClick={handleClick}
       onDoubleClick={handleDblClick}
+      onKeyDown={handleKeyDown}
+      role="button"
+      tabIndex={0}
+      aria-label={`Open ${label}`}
     >
       <img src={icon} alt={label} draggable={false} />
       <span className="desktop-icon-label">{label}</span>

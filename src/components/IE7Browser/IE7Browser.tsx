@@ -4,13 +4,14 @@ import { ie7Favorites, apps } from '../../data/appRegistry'
 import { useDesktopStore } from '../../store/windowStore'
 import { prefixMediaInHtml } from '../../data/mediaBaseUrl'
 
-type PageType = 'google' | 'portfolio' | 'iframe' | 'notfound'
+type PageType = 'google' | 'portfolio' | 'iframe' | 'search' | 'notfound'
 
 interface Page {
   type: PageType
   sectionId?: string
   url: string
   title: string
+  query?: string
 }
 
 const GOOGLE_PAGE: Page = { type: 'google', url: 'http://www.google.com', title: 'Google' }
@@ -25,43 +26,41 @@ export default function IE7Browser({ windowId }: { windowId: string }) {
   const [iframeError, setIframeError] = useState(false)
   const contentRef = useRef<HTMLDivElement>(null)
   const iframeRef = useRef<HTMLIFrameElement>(null)
-  const initialHandled = useRef(false)
+  const lastInitialData = useRef<Record<string, unknown> | undefined>(undefined)
   const searchInputRef = useRef<string>('')
-  const [showTip, setShowTip] = useState(true)
 
   const currentPage = history[historyIdx]
 
   // Handle initialData from desktop icon clicks
   useEffect(() => {
-    if (!win?.initialData || initialHandled.current) return
+    if (!win?.initialData || lastInitialData.current === win.initialData) return
     const data = win.initialData
-    initialHandled.current = true
+    lastInitialData.current = data
     if (data.section) {
       navigateToSection(data.section as string)
-      // Also open external URL in a new tab if provided
-      if (data.externalUrl) {
-        window.open(data.externalUrl as string, '_blank', 'noopener,noreferrer')
-      }
     } else if (data.url) {
       navigateToUrl(data.url as string)
     }
   }, [win?.initialData])
 
-  // Intercept clicks on media links (data-open-video / data-open-music) in portfolio HTML
+  // Intercept app and external links rendered inside portfolio HTML.
   useEffect(() => {
     const el = contentRef.current
     if (!el) return
     const handler = (e: MouseEvent) => {
-      const target = (e.target as HTMLElement).closest<HTMLElement>('[data-open-video], [data-open-music]')
+      const target = (e.target as HTMLElement).closest<HTMLElement>('[data-open-video], [data-open-music], [data-open-external]')
       if (!target) return
       e.preventDefault()
       e.stopPropagation()
       const videoSrc = target.getAttribute('data-open-video')
       const musicSrc = target.getAttribute('data-open-music')
+      const externalUrl = target.getAttribute('data-open-external')
       if (videoSrc) {
         openWindow(apps.videoplayer, undefined, { playSrc: videoSrc })
       } else if (musicSrc) {
         openWindow(apps.musicplayer, undefined, { playSrc: musicSrc })
+      } else if (externalUrl) {
+        window.open(externalUrl, '_blank', 'noopener,noreferrer')
       }
     }
     el.addEventListener('click', handler)
@@ -92,6 +91,22 @@ export default function IE7Browser({ windowId }: { windowId: string }) {
     setTimeout(() => setLoading(false), 200)
   }, [pushPage])
 
+  const openGoogleResults = useCallback((query: string, lucky = false) => {
+    const cleanQuery = query.trim()
+    if (!cleanQuery) return
+    const url = lucky
+      ? `https://www.google.com/search?btnI=1&q=${encodeURIComponent(cleanQuery)}`
+      : `https://www.google.com/search?q=${encodeURIComponent(cleanQuery)}`
+    window.open(url, '_blank', 'noopener,noreferrer')
+    pushPage({
+      type: 'search',
+      url,
+      title: `${cleanQuery} - Google Search`,
+      query: cleanQuery,
+    })
+    setLoading(false)
+  }, [pushPage])
+
   const navigateToUrl = useCallback((rawUrl: string) => {
     // Check if it's a portfolio section
     const match = portfolioSections.find(s =>
@@ -110,7 +125,7 @@ export default function IE7Browser({ windowId }: { windowId: string }) {
       return
     }
 
-    // Handle mailto: links — can't iframe these
+    // Handle mailto: links - can't iframe these
     if (rawUrl.trim().toLowerCase().startsWith('mailto:')) {
       window.location.href = rawUrl.trim()
       return
@@ -123,8 +138,9 @@ export default function IE7Browser({ windowId }: { windowId: string }) {
       if (url.includes('.') && !url.includes(' ')) {
         url = 'https://' + url
       } else {
-        // Treat as Google search — load Google results in iframe
-        url = `https://www.google.com/search?igu=1&q=${encodeURIComponent(rawUrl.trim())}`
+        // Google blocks embedded result pages, so hand off the real search cleanly.
+        openGoogleResults(rawUrl)
+        return
       }
     }
 
@@ -143,7 +159,7 @@ export default function IE7Browser({ windowId }: { windowId: string }) {
     setIframeError(false)
     pushPage(page)
     // Loading state cleared by iframe onLoad or timeout
-  }, [pushPage, navigateToSection, navigateToGoogle])
+  }, [pushPage, navigateToSection, navigateToGoogle, openGoogleResults])
 
   // ── History navigation ──
 
@@ -187,14 +203,9 @@ export default function IE7Browser({ windowId }: { windowId: string }) {
   const handleGoogleSearch = useCallback(() => {
     const query = searchInputRef.current.trim()
     if (query) {
-      // Navigate to Google search results INSIDE the iframe
-      const url = `https://www.google.com/search?igu=1&q=${encodeURIComponent(query)}`
-      const page: Page = { type: 'iframe', url, title: `${query} - Google Search` }
-      setLoading(true)
-      setIframeError(false)
-      pushPage(page)
+      openGoogleResults(query)
     }
-  }, [pushPage])
+  }, [openGoogleResults])
 
   // Wire up Google homepage inputs
   useEffect(() => {
@@ -212,8 +223,11 @@ export default function IE7Browser({ windowId }: { windowId: string }) {
       setTimeout(() => input.focus(), 100)
     }
     if (btn) btn.onclick = handleGoogleSearch
-    if (lucky) lucky.onclick = handleGoogleSearch
-  }, [currentPage.type, loading, handleGoogleSearch])
+    if (lucky) lucky.onclick = () => {
+      const query = searchInputRef.current.trim()
+      if (query) openGoogleResults(query, true)
+    }
+  }, [currentPage.type, loading, handleGoogleSearch, openGoogleResults])
 
   // ── Iframe handlers ──
 
@@ -231,7 +245,7 @@ export default function IE7Browser({ windowId }: { windowId: string }) {
         })
       }
     } catch {
-      // Cross-origin — expected, ignore
+      // Cross-origin - expected, ignore
     }
   }, [historyIdx])
 
@@ -248,10 +262,6 @@ export default function IE7Browser({ windowId }: { windowId: string }) {
   // ── Favorites click ──
 
   const handleFavClick = (fav: (typeof ie7Favorites)[number]) => {
-    if ('externalUrl' in fav && fav.externalUrl) {
-      // Open external URL in new tab
-      window.open(fav.externalUrl as string, '_blank', 'noopener,noreferrer')
-    }
     if ('section' in fav && fav.section) {
       navigateToSection(fav.section)
     } else if ('externalUrl' in fav && fav.externalUrl) {
@@ -286,6 +296,7 @@ export default function IE7Browser({ windowId }: { windowId: string }) {
           <input
             className="ie7-address-input"
             value={addressVal}
+            aria-label="Internet Explorer address"
             onChange={e => setAddressVal(e.target.value)}
             onKeyDown={e => e.key === 'Enter' && handleAddressSubmit()}
             spellCheck={false}
@@ -331,18 +342,6 @@ export default function IE7Browser({ windowId }: { windowId: string }) {
 
       {/* Content Area */}
       <div className="ie7-content" ref={contentRef}>
-        {/* Sticky tip note */}
-        {showTip && (
-          <div className="ie7-tip-note">
-            <button className="ie7-tip-close" onClick={() => setShowTip(false)}>&times;</button>
-            <div className="ie7-tip-icon">&#128161;</div>
-            <div className="ie7-tip-text">
-              <strong>Tip:</strong> Most external websites can&apos;t be embedded here due to browser security.
-              Use the <strong>&#9733; Favorites</strong> bar to browse Aaron&apos;s portfolio, or click
-              &ldquo;Open in new tab&rdquo; to view external sites.
-            </div>
-          </div>
-        )}
         {/* Loading overlay for non-iframe pages */}
         {loading && currentPage.type !== 'iframe' && (
           <div className="ie7-loading">
@@ -359,6 +358,19 @@ export default function IE7Browser({ windowId }: { windowId: string }) {
         {/* Portfolio section (rendered locally) */}
         {!loading && currentPage.type === 'portfolio' && section && (
           <div dangerouslySetInnerHTML={{ __html: prefixMediaInHtml(section.content) }} />
+        )}
+
+        {/* Real Google searches open outside the simulated browser because Google blocks embedding. */}
+        {!loading && currentPage.type === 'search' && (
+          <div className="search-handoff">
+            <div className="search-handoff-icon">G</div>
+            <h1>Search opened in a new tab</h1>
+            <p>Google does not allow its results page to run inside an embedded browser.</p>
+            <div className="search-handoff-query">{currentPage.query}</div>
+            <button className="portfolio-action primary" onClick={() => currentPage.query && openGoogleResults(currentPage.query)}>
+              Open results again
+            </button>
+          </div>
         )}
 
         {/* External website in iframe */}
@@ -380,7 +392,7 @@ export default function IE7Browser({ windowId }: { windowId: string }) {
               onError={() => { setLoading(false); setIframeError(true) }}
               title="Browser"
               referrerPolicy="no-referrer-when-downgrade"
-              allow="accelerometer; camera; encrypted-media; geolocation; gyroscope; microphone; clipboard-write"
+              sandbox="allow-forms allow-modals allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
             />
             {iframeError && (
               <div className="ie7-iframe-error" style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: '#fff', gap: 12, textAlign: 'center', padding: 32 }}>
@@ -388,7 +400,7 @@ export default function IE7Browser({ windowId }: { windowId: string }) {
                 <h3 style={{ margin: 0 }}>This page can&apos;t be displayed</h3>
                 <p style={{ color: '#666', maxWidth: 400, lineHeight: 1.5 }}>The website refused the connection or does not allow embedding.</p>
                 <button
-                  onClick={() => window.open(currentPage.url, '_blank')}
+                  onClick={() => window.open(currentPage.url, '_blank', 'noopener,noreferrer')}
                   style={{
                     padding: '8px 24px', background: '#0078D4', color: '#fff', border: 'none',
                     borderRadius: 4, cursor: 'pointer', fontSize: 14, fontWeight: 600
@@ -417,13 +429,13 @@ export default function IE7Browser({ windowId }: { windowId: string }) {
           {currentPage.type === 'iframe' && (
             <button
               className="ie7-external-btn"
-              onClick={() => window.open(currentPage.url, '_blank')}
+              onClick={() => window.open(currentPage.url, '_blank', 'noopener,noreferrer')}
               title="Open in new browser tab"
             >
               Open in new tab ↗
             </button>
           )}
-          <span>Internet | Protected Mode: On</span>
+          <span>Internet | External pages open safely in a new tab</span>
         </span>
       </div>
     </div>

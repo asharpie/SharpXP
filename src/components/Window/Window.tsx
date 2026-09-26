@@ -30,6 +30,8 @@ export default function Window({ window: win, isActive, children }: Props) {
   return (
     <Rnd
       className={`xp-window-wrapper ${win.minimized ? 'minimized' : ''}`}
+      role="dialog"
+      aria-label={win.title}
       position={win.position}
       size={win.size}
       minWidth={win.minSize?.width || 200}

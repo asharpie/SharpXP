@@ -6,7 +6,7 @@ export const apps: Record<string, AppDefinition> = {
     title: 'Internet Explorer',
     icon: '/icons/ie7.svg',
     defaultSize: { width: 920, height: 640 },
-    minSize: { width: 500, height: 380 },
+    minSize: { width: 320, height: 300 },
     resizable: true,
     singleton: true,
   },
@@ -94,16 +94,17 @@ export const desktopIcons: DesktopIconDef[] = [
   { appId: 'mycomputer', label: 'My Computer', icon: '/icons/mycomputer.svg' },
   { appId: 'ie7', label: 'Internet Explorer', icon: '/icons/ie7.svg' },
   { appId: 'recyclebin', label: 'Recycle Bin', icon: '/icons/recyclebin.svg' },
-  // Portfolio sections — open IE7 to that section
+  // Portfolio sections - open IE7 to that section
   { appId: 'ie7', label: 'About Me', icon: '/icons/aboutme.svg', initialData: { section: 'about' } },
   { appId: 'ie7', label: 'Experience', icon: '/icons/experience.svg', initialData: { section: 'experience' } },
   { appId: 'ie7', label: 'Research', icon: '/icons/research.svg', initialData: { section: 'research' } },
   { appId: 'ie7', label: 'Awards', icon: '/icons/awards.svg', initialData: { section: 'awards' } },
   { appId: 'ie7', label: 'Education', icon: '/icons/education.svg', initialData: { section: 'education' } },
   { appId: 'ie7', label: 'Projects', icon: '/icons/projects.svg', initialData: { section: 'projects' } },
+  { appId: 'ie7', label: 'Motion+', icon: '/icons/motionplus.svg', initialData: { section: 'motionplus', externalUrl: 'https://motionplusllc.com' } },
   { appId: 'ie7', label: 'Extracurricular', icon: '/icons/extracurriculars.svg', initialData: { section: 'extracurriculars' } },
   { appId: 'ie7', label: 'Hobbies', icon: '/icons/guitar.svg', initialData: { section: 'hobbies' } },
-  // Social links — open local recreation + redirect to real profile in new tab
+  // Social links - open local recreation + redirect to real profile in new tab
   { appId: 'ie7', label: 'GitHub', icon: '/icons/github.svg', initialData: { section: 'github', externalUrl: 'https://github.com/asharpie' } },
   { appId: 'ie7', label: 'LinkedIn', icon: '/icons/linkedin.svg', initialData: { section: 'linkedin', externalUrl: 'https://www.linkedin.com/in/AaronSharp05' } },
   { appId: 'ie7', label: 'Instagram', icon: '/icons/instagram.svg', initialData: { section: 'instagram', externalUrl: 'https://www.instagram.com/aaronsharp_2/' } },
@@ -120,12 +121,13 @@ export const startMenuApps = [
   { appId: 'ie7', label: 'Internet Explorer', icon: '/icons/ie7.svg', pinned: true },
   { appId: 'musicplayer', label: 'Windows Media Player', icon: '/icons/musicplayer.svg', pinned: true },
   { appId: 'notepad', label: 'Notepad', icon: '/icons/notepad.svg' },
+  { appId: 'outlookexpress', label: 'Outlook Express', icon: '/icons/email.svg' },
   { appId: 'snake', label: 'Snake', icon: '/icons/snake.svg' },
   { appId: 'minesweeper', label: 'Minesweeper', icon: '/icons/minesweeper.svg' },
   { appId: 'mycomputer', label: 'My Computer', icon: '/icons/mycomputer.svg' },
 ]
 
-// IE7 Favorites bar items — these open inside IE7
+// IE7 Favorites bar items - these open inside IE7
 export const ie7Favorites = [
   { label: 'About Me', section: 'about' },
   { label: 'Experience', section: 'experience' },
@@ -133,6 +135,7 @@ export const ie7Favorites = [
   { label: 'Awards', section: 'awards' },
   { label: 'Education', section: 'education' },
   { label: 'Projects', section: 'projects' },
+  { label: 'Motion+', section: 'motionplus', icon: '/icons/motionplus.svg', externalUrl: 'https://motionplusllc.com' },
   { label: 'Extracurricular', section: 'extracurriculars' },
   { label: 'Hobbies', section: 'hobbies' },
   { type: 'divider' as const },

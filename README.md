@@ -16,26 +16,28 @@ A fully interactive Windows XP desktop environment built with React and TypeScri
 - Desktop icons with double-click to open
 - Right-click context menu
 - Mobile and touch device support
-- XP boot screen animation
+- XP boot screen animation with automatic desktop entry after three seconds
 
 ### Built-in Applications
 
 | App | Description |
 |-----|-------------|
-| **Internet Explorer 7** | Portfolio browser with favorites bar, address bar, and navigation across portfolio sections (About, Experience, Projects, etc.) |
+| **Internet Explorer 7** | Portfolio browser with favorites, history, current portfolio pages, and real Google search handoff |
 | **Notepad** | Text editor with a virtual file system |
 | **My Computer** | File explorer showing drives and system info |
 | **Recycle Bin** | Recycle bin viewer |
 | **Windows Media Player** | Music player with playlist, album art, and visualizer |
 | **Video Player** | Video player with movie grid and cover art |
-| **Outlook Express** | Email compose form |
+| **Outlook Express** | Editable joke recruiting email that opens in the visitor's email client |
 | **Snake** | Classic snake game |
 | **Minesweeper** | Classic minesweeper game |
 | **Clippy** | The beloved Office assistant |
 
 ### Portfolio Integration
 
-Desktop icons and the IE7 favorites bar link to portfolio sections including About Me, Experience, Research, Awards, Education, Projects, Extracurriculars, and Hobbies. Social links (GitHub, LinkedIn, Instagram) open both an in-browser recreation and redirect to the real profile in a new tab.
+Desktop icons and the IE7 favorites bar link to portfolio sections including About Me, Experience, Research, Awards, Education, Projects, Motion+ LLC, Leadership, and Hobbies. GitHub, LinkedIn, and Instagram open polished in-browser recreations with clear links to the real profiles.
+
+The portfolio content reflects Aaron's current CV, including Georgia Tech SURE research, NSF-funded rover controls research, Motion+ LLC, current academic details, and 2026 awards.
 
 ## Tech Stack
 
@@ -121,7 +123,7 @@ Edit `src/data/appRegistry.ts` to add, remove, or reorder desktop icons and star
 
 ### Portfolio Content
 
-Edit `src/data/portfolio.ts` to update the portfolio sections displayed in Internet Explorer.
+Edit `src/data/portfolioContent.ts` for the core portfolio pages and `src/data/portfolio.ts` for the Google home page, hobbies, and social recreations.
 
 ## Project Structure
 
@@ -138,7 +140,8 @@ src/
     Window/            Window component and manager
   data/
     appRegistry.ts     App definitions, desktop icons, start menu config
-    portfolio.ts       Portfolio section content
+    portfolioContent.ts Current CV-driven portfolio pages
+    portfolio.ts       Google, hobbies, and social recreations
     mediaConfig.ts     Media/CDN configuration
   store/
     windowStore.ts     Window state management (Zustand)

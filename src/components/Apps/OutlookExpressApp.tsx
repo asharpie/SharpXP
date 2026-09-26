@@ -25,7 +25,7 @@ The Entire Hiring Team
 P.S. We also really liked your Minesweeper clone.`
 
 export default function OutlookExpressApp() {
-  const [to, setTo] = useState('aaronsharp2005@gmail.com')
+  const [to, setTo] = useState('amsharp4@crimson.ua.edu')
   const [subject, setSubject] = useState('Position Offer - Aaron Sharp')
   const [body, setBody] = useState(DEFAULT_BODY)
   const [sent, setSent] = useState(false)
@@ -34,7 +34,7 @@ export default function OutlookExpressApp() {
     const params: string[] = []
     if (subject) params.push(`subject=${encodeURIComponent(subject)}`)
     if (body) params.push(`body=${encodeURIComponent(body)}`)
-    const mailto = `mailto:${encodeURIComponent(to || 'aaronsharp2005@gmail.com')}${params.length ? '?' + params.join('&') : ''}`
+    const mailto = `mailto:${encodeURIComponent(to || 'amsharp4@crimson.ua.edu')}${params.length ? '?' + params.join('&') : ''}`
     window.open(mailto)
     setSent(true)
     setTimeout(() => setSent(false), 3000)
@@ -46,27 +46,38 @@ export default function OutlookExpressApp() {
         <button className="oe-toolbar-btn oe-send-btn" onClick={handleSend}>
           📨 Send
         </button>
-        <button className="oe-toolbar-btn" disabled>✂️ Cut</button>
-        <button className="oe-toolbar-btn" disabled>📋 Copy</button>
-        <button className="oe-toolbar-btn" disabled>📎 Attach</button>
+        <button
+          className="oe-toolbar-btn oe-reset-btn"
+          onClick={() => {
+            setTo('amsharp4@crimson.ua.edu')
+            setSubject('Position Offer - Aaron Sharp')
+            setBody(DEFAULT_BODY)
+          }}
+        >
+          ↻ Restore joke
+        </button>
+        <span className="oe-compose-note">A very serious recruiting email</span>
       </div>
       <div className="oe-fields">
         <div className="oe-field-row">
-          <label className="oe-label">To:</label>
+          <label className="oe-label" htmlFor="oe-to">To:</label>
           <input
+            id="oe-to"
             className="oe-input"
             value={to}
             onChange={e => setTo(e.target.value)}
-            placeholder="aaronsharp2005@gmail.com"
+            placeholder="amsharp4@crimson.ua.edu"
+            inputMode="email"
           />
         </div>
         <div className="oe-field-row">
-          <label className="oe-label">Cc:</label>
-          <input className="oe-input" disabled placeholder="" />
+          <label className="oe-label" htmlFor="oe-cc">Cc:</label>
+          <input id="oe-cc" className="oe-input" disabled placeholder="" />
         </div>
         <div className="oe-field-row">
-          <label className="oe-label">Subject:</label>
+          <label className="oe-label" htmlFor="oe-subject">Subject:</label>
           <input
+            id="oe-subject"
             className="oe-input"
             value={subject}
             onChange={e => setSubject(e.target.value)}
@@ -76,10 +87,15 @@ export default function OutlookExpressApp() {
       </div>
       <textarea
         className="oe-body"
+        aria-label="Email body"
         value={body}
         onChange={e => setBody(e.target.value)}
         placeholder="Write your message here..."
       />
+      <div className="oe-statusbar">
+        <span>Ready</span>
+        <span>Edit the masterpiece, or send it exactly as Aaron intended.</span>
+      </div>
       {sent && (
         <div className="oe-sent-toast">
           ✅ Opening your email client...

@@ -154,7 +154,7 @@ export default function MusicPlayer({ windowId }: { windowId: string }) {
         <div className="wmp-now-playing">
           <div className="wmp-title">{current?.title || (loaded ? 'No tracks' : 'Loading...')}</div>
           <div className="wmp-artist">
-            {current ? `${current.artist} — ${current.album}` : ''}
+            {current ? `${current.artist} - ${current.album}` : ''}
           </div>
         </div>
       </div>
@@ -186,7 +186,7 @@ export default function MusicPlayer({ windowId }: { windowId: string }) {
       {/* Playlist */}
       <div className="wmp-playlist">
         <div className="wmp-playlist-header">
-          Playlist — {playlist.length} track{playlist.length !== 1 ? 's' : ''}
+          Playlist - {playlist.length} track{playlist.length !== 1 ? 's' : ''}
         </div>
         {!loaded && <div className="wmp-playlist-empty">Loading...</div>}
         {loaded && playlist.length === 0 && (
@@ -213,7 +213,7 @@ export default function MusicPlayer({ windowId }: { windowId: string }) {
             )}
             <div className="wmp-playlist-info">
               <span className="wmp-track-title">{track.title}</span>
-              <span className="wmp-track-artist">{track.artist} — {track.album}</span>
+              <span className="wmp-track-artist">{track.artist} - {track.album}</span>
             </div>
           </div>
         ))}

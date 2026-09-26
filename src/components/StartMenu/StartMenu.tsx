@@ -25,26 +25,26 @@ export default function StartMenu() {
         <div className="start-menu-body">
           <div className="start-menu-left">
             {startMenuApps.map(a => (
-              <div key={a.appId + a.label} className="start-menu-item" onClick={() => launch(a.appId)}>
+              <button type="button" key={a.appId + a.label} className="start-menu-item" onClick={() => launch(a.appId)}>
                 <img src={a.icon} alt="" draggable={false} /><span>{a.label}</span>
-              </div>
+              </button>
             ))}
             <div className="start-menu-divider" />
-            <div className="start-menu-item" style={{ opacity: 0.5 }}>
+            <button type="button" className="start-menu-item" disabled>
               <img src="/icons/folder.svg" alt="" draggable={false} /><span>All Programs ▸</span>
-            </div>
+            </button>
           </div>
           <div className="start-menu-right">
-            <div className="start-menu-item small" onClick={() => launch('mycomputer')}>
+            <button type="button" className="start-menu-item small" onClick={() => launch('mycomputer')}>
               <img src="/icons/mycomputer.svg" alt="" draggable={false} /><span>My Computer</span>
-            </div>
-            <div className="start-menu-item small" style={{ opacity: 0.5 }}>
+            </button>
+            <button type="button" className="start-menu-item small" disabled>
               <img src="/icons/folder.svg" alt="" draggable={false} /><span>My Documents</span>
-            </div>
+            </button>
             <div className="start-menu-divider" />
-            <div className="start-menu-item small" onClick={() => launch('notepad')}>
+            <button type="button" className="start-menu-item small" onClick={() => launch('notepad')}>
               <img src="/icons/notepad.svg" alt="" draggable={false} /><span>Notepad</span>
-            </div>
+            </button>
           </div>
         </div>
         <div className="start-menu-footer">

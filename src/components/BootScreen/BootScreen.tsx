@@ -1,18 +1,28 @@
-import { useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useDesktopStore } from '../../store/windowStore'
 
 export default function BootScreen() {
   const boot = useDesktopStore(s => s.boot)
   const [fading, setFading] = useState(false)
 
-  const handleClick = () => {
+  const enterDesktop = useCallback(() => {
     if (fading) return
     setFading(true)
     setTimeout(() => boot(), 800)
-  }
+  }, [boot, fading])
+
+  useEffect(() => {
+    const timer = window.setTimeout(enterDesktop, 2200)
+    return () => window.clearTimeout(timer)
+  }, [enterDesktop])
 
   return (
-    <div className={`boot-screen ${fading ? 'fading' : ''}`} onClick={handleClick}>
+    <button
+      type="button"
+      className={`boot-screen ${fading ? 'fading' : ''}`}
+      onClick={enterDesktop}
+      aria-label="Start SharpXP now. The desktop starts automatically after three seconds."
+    >
       <div className="boot-logo-area">
         <div className="boot-flag">
           <div className="boot-flag-piece" />
@@ -31,8 +41,8 @@ export default function BootScreen() {
           </div>
         </div>
       </div>
-      <div className="boot-click-hint">Click anywhere to enter</div>
+      <div className="boot-click-hint">Starting automatically · Click to skip</div>
       <div className="boot-bottom-text">Aaron Sharp's Portfolio</div>
-    </div>
+    </button>
   )
 }
