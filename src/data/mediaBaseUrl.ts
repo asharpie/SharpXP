@@ -12,6 +12,14 @@ export function getMediaBaseUrl(): string {
   return (import.meta.env.VITE_MEDIA_BASE_URL as string | undefined)?.replace(/\/+$/, '') ?? ''
 }
 
+const bundledImageFilenames = new Set([
+  'gt-moga-build.jpg',
+  'gt-moga-poster.jpg',
+  'gt-moga-system.jpg',
+  'gt-moga-team.jpg',
+  'motionplus-sloss-tech.jpg',
+])
+
 /**
  * Rewrites media paths in an HTML string so that references like
  *   src="/images/...", src="/videos/...", src="/music/...",
@@ -23,9 +31,15 @@ export function getMediaBaseUrl(): string {
 export function prefixMediaInHtml(html: string): string {
   const base = getMediaBaseUrl()
   if (!base) return html
-  // Prefix src="/<media>/...", data-open-video="/<media>/...", data-open-music="/<media>/..."
+
+  // Keep portfolio photos bundled with SharpXP while older media stays on the CDN.
   return html.replace(
-    /((?:src|data-open-video|data-open-music)=["'])\/(images|videos|music)\//g,
-    `$1${base}/$2/`,
+    /((?:src|data-open-video|data-open-music)=["'])\/(images|videos|music)\/([^"']+)/g,
+    (_match, prefix: string, directory: string, relativePath: string) => {
+      if (directory === 'images' && bundledImageFilenames.has(relativePath)) {
+        return `${prefix}/images/${relativePath}`
+      }
+      return `${prefix}${base}/${directory}/${relativePath}`
+    },
   )
 }

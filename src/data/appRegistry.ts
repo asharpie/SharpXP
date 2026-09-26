@@ -101,7 +101,7 @@ export const desktopIcons: DesktopIconDef[] = [
   { appId: 'ie7', label: 'Awards', icon: '/icons/awards.svg', initialData: { section: 'awards' } },
   { appId: 'ie7', label: 'Education', icon: '/icons/education.svg', initialData: { section: 'education' } },
   { appId: 'ie7', label: 'Projects', icon: '/icons/projects.svg', initialData: { section: 'projects' } },
-  { appId: 'ie7', label: 'Motion+', icon: '/icons/motionplus.svg', initialData: { section: 'motionplus', externalUrl: 'https://motionplusllc.com' } },
+  { appId: 'ie7', label: 'Motion+', icon: '/icons/motionplus.svg', initialData: { url: 'https://motionplusllc.com' } },
   { appId: 'ie7', label: 'Extracurricular', icon: '/icons/extracurriculars.svg', initialData: { section: 'extracurriculars' } },
   { appId: 'ie7', label: 'Hobbies', icon: '/icons/guitar.svg', initialData: { section: 'hobbies' } },
   // Social links - open local recreation + redirect to real profile in new tab
@@ -135,7 +135,7 @@ export const ie7Favorites = [
   { label: 'Awards', section: 'awards' },
   { label: 'Education', section: 'education' },
   { label: 'Projects', section: 'projects' },
-  { label: 'Motion+', section: 'motionplus', icon: '/icons/motionplus.svg', externalUrl: 'https://motionplusllc.com' },
+  { label: 'Motion+', icon: '/icons/motionplus.svg', externalUrl: 'https://motionplusllc.com' },
   { label: 'Extracurricular', section: 'extracurriculars' },
   { label: 'Hobbies', section: 'hobbies' },
   { type: 'divider' as const },
