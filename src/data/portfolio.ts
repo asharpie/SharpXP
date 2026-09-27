@@ -73,12 +73,12 @@ const extraPortfolioSections: PortfolioSection[] = [
           <div class="hobby-content">
             <h2>Guitar</h2>
             <p>Beyond building them, I also play guitar. Whether it's unwinding after a long day in the lab or jamming with friends, playing guitar is one of my favorite creative outlets.</p>
-            <p>I'm currently building a <strong>fully 3D-printed electric guitar</strong> from scratch. It's still a work in progress - I still need to paint it, add the neck, and wire up the electronics - but it's coming along nicely.</p>
+            <p>I built a <strong>fully 3D-printed electric guitar</strong> from scratch. The finished instrument pairs a custom-printed body with a traditional neck, pickups, bridge, and electronics.</p>
             <div class="hobby-photo-placeholder">
               <div class="hobby-photo-frame" style="overflow:hidden;">
-                <img src="/images/3d-printed%20guitar%20base.PNG" alt="3D Printed Electric Guitar (WIP)" style="display:block;width:100%;margin-top:-25%;margin-bottom:-25%;" onerror="this.parentElement.innerHTML='<div class=\\'hobby-photo-fallback\\'>&#127928;<br/><span>Guitar Photo</span></div>'" />
+                <img src="/images/3d-printed-guitar.jpg" width="1440" height="1920" alt="Aaron Sharp's finished 3D-printed electric guitar" onerror="this.parentElement.innerHTML='<div class=\\'hobby-photo-fallback\\'>&#127928;<br/><span>Guitar Photo</span></div>'" />
               </div>
-              <p class="hobby-photo-caption">The 3D-printed electric guitar - work in progress!</p>
+              <p class="hobby-photo-caption">My finished 3D-printed electric guitar.</p>
             </div>
           </div>
         </div>

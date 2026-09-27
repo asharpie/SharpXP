@@ -133,7 +133,6 @@ export const updatedPortfolioSections: PortfolioSection[] = [
             </div>
             <p class="entry-summary">In Dr. Alvaro Romero-Calvo's Low Gravity Science and Technology Lab, I designed and built the electrical, control, and safety systems for MGT, the ground-test platform for the NASA NIAC Phase II Magnetohydrodynamic Oxygen Generation Assembly.</p>
             <div class="research-metric-row">
-              <div><strong>0.02°</strong><span>verified angular indexing</span></div>
               <div><strong>12</strong><span>safety-monitored sensor channels</span></div>
               <div><strong>10 Hz</strong><span>real-time interlock evaluation</span></div>
               <div><strong>30 days</strong><span>target endurance campaign</span></div>
@@ -148,7 +147,6 @@ export const updatedPortfolioSections: PortfolioSection[] = [
               <figure class="photo-card photo-wide"><img src="/images/gt-moga-team.jpg" width="5712" height="4284" loading="lazy" decoding="async" alt="Aaron Sharp and a collaborator beside the MOGA ground-test platform at Georgia Tech" /><figcaption>Working MGT platform in the LGST Lab</figcaption></figure>
               <figure class="photo-card"><img src="/images/gt-moga-build.jpg" width="4284" height="5712" loading="lazy" decoding="async" alt="Aaron Sharp wiring the MOGA ground-test platform" /><figcaption>Electrical and control integration</figcaption></figure>
               <figure class="photo-card"><img src="/images/gt-moga-poster.jpg" width="1440" height="1920" loading="lazy" decoding="async" alt="Aaron Sharp presenting the MOGA research poster at Georgia Tech" /><figcaption>SURE REU symposium presentation</figcaption></figure>
-              <figure class="photo-card"><img src="/images/gt-moga-system.jpg" width="120" height="160" loading="lazy" decoding="async" alt="Close view of the MOGA experimental system" /><figcaption>MOGA experimental hardware</figcaption></figure>
             </div>
             <div class="tag-list"><span>C++</span><span>Python</span><span>LabJack</span><span>InfluxDB</span><span>Grafana</span><span>Motor control</span><span>Safety systems</span></div>
           </article>

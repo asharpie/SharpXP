@@ -13,9 +13,9 @@ export function getMediaBaseUrl(): string {
 }
 
 const bundledImageFilenames = new Set([
+  '3d-printed-guitar.jpg',
   'gt-moga-build.jpg',
   'gt-moga-poster.jpg',
-  'gt-moga-system.jpg',
   'gt-moga-team.jpg',
   'motionplus-sloss-tech.jpg',
 ])
